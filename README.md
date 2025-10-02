@@ -95,6 +95,34 @@ npx expo run:android
 - **Sleep Analyzer:** Track sleep duration for wellness insights.
 - **Health Monitor:** Alert on irregular heart rates.
 
+```mermaid
+sequenceDiagram
+    actor User
+    participant App
+    participant useHealthConnectHook
+    participant HealthConnectAPI
+    participant UI
+
+    User->>App: Open App
+    App->>useHealthConnectHook: Initialize Hook
+    useHealthConnectHook->>HealthConnectAPI: Request Permissions
+    HealthConnectAPI->>useHealthConnectHook: Permission Status
+    useHealthConnectHook->>App: Permission Check Result
+    App->>User: Display Permission Prompt
+    User->>App: Grant/Deny Access
+    App->>useHealthConnectHook: Permission Response
+    useHealthConnectHook->>HealthConnectAPI: Fetch Health Data (Steps, Calories, Heart Rate, Sleep)
+    HealthConnectAPI->>useHealthConnectHook: Return Data
+    useHealthConnectHook->>UI: Update with Fetched Data
+    UI->>User: Display Health Metrics
+    User->>App: Trigger Refresh
+    App->>useHealthConnectHook: Call Refetch
+    useHealthConnectHook->>HealthConnectAPI: Fetch Updated Data
+    HealthConnectAPI->>useHealthConnectHook: Return Updated Data
+    useHealthConnectHook->>UI: Update with New Data
+    UI->>User: Display Updated Metrics
+```
+
 ## 🤝 Contributing
 Contributions are welcome! 🙌 Fork the repo, create a branch, and submit a pull request. Check issues for tasks or report bugs.
 
