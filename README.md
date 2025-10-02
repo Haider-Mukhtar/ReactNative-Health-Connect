@@ -1,50 +1,109 @@
-# Welcome to your Expo app 👋
+# React Native Google Health Connect Integration with Expo 🚀
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<img width="1500" height="750" alt="Medium Banners (3)" src="https://github.com/user-attachments/assets/a55980c1-6605-42e6-b61c-429f4026f1db" />
 
-## Get started
+**A robust, TypeScript-based React Native Expo app demonstrating seamless integration with Google Health Connect using `react-native-health-connect`.**
 
-1. Install dependencies
+This repository provides a complete guide and codebase for integrating Google Health Connect into a React Native Expo app. Fetch health data like steps, calories burned, heart rate, and sleep with ease, while handling permissions, errors, and best practices. Built with TypeScript for type safety, this project is perfect for developers building fitness or wellness apps in 2025! 🎉
 
-   ```bash
-   npm install
-   ```
+For a detailed step-by-step tutorial, check out our Medium post.
+**[Integrating Google Health Connect in React Native Expo Apps](https://medium.com/@haidermukhtar/integrating-google-health-connect-in-react-native-expo-apps-56e2477b7e17)**
 
-2. Start the app
+> **Note**: Health Connect is Android-only. For iOS, consider `react-native-health` for Apple HealthKit integration. Always test on a physical Android device or emulator and comply with GDPR/HIPAA for user privacy..
 
-   ```bash
-   npx expo start
-   ```
+## 🎯 Features
+- Fetch **steps**, **calories burned**, **heart rate**, and **sleep data** from Google Health Connect.
+- Custom React hook for streamlined data fetching and permission handling.
+- Comprehensive error handling for permission denials and edge cases.
+- Expo dev client for native module support.
+- TypeScript for robust type safety.
+- Modern, gradient-based UI with reusable components.
 
-In the output, you'll find options to open the app in a
+## 📸 Permission Request Flow
+<img width="1500" height="750" alt="Medium Banners (1)" src="https://github.com/user-attachments/assets/74db4f48-b4a9-4763-b282-b22580524ca1" />
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📱 Main Dashboard
+<img width="364" height="750" alt="Medium Banners (2)" src="https://github.com/user-attachments/assets/fdf12ede-d875-49f6-9e94-ebc7b97d3699" />
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## 🚀 Getting Started
 
-When you're ready, run:
-
+### 1. Clone the Repository
 ```bash
-npm run reset-project
+git clone https://github.com/Haider-Mukhtar/ReactNative-Health-Connect.git
+cd ReactNative-Health-Connect
+```
+### 2. Install Dependencies
+```bash
+npm install
+```
+### 3. Configure Android Permissions
+Update `app.json` with the following configuration:
+```bash
+{
+  "expo": {
+    "plugins": [
+      "expo-health-connect",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 26,
+            "buildToolsVersion": "35.0.0"
+          }
+        }
+      ]
+    ],
+    "android": {
+      "package": "com.yourcompany.healthconnectdemo",
+      "permissions": [
+        "android.permission.health.READ_STEPS",
+        "android.permission.health.READ_ACTIVE_CALORIES_BURNED",
+        "android.permission.health.READ_HEART_RATE",
+        "android.permission.health.READ_SLEEP"
+      ]
+    }
+  }
+}
+```
+### 4. Prebuild the Project
+Since this project uses native modules, run:
+```bash
+npx expo prebuild --platform android
+```
+### 5. Run the App
+```bash
+npx expo run:android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📂 Project Structure
+```
+├── app/
+│   ├── _layout.tsx           # Main app layout
+│   ├── index.tsx             # Main app screen
+│── assets/
+│── hooks/
+│   │── useHealthConnect.ts   # Custom hook for Health Connect
+├── app.json                  # Expo configuration
+├── README.md                 # You're here!
+```
 
-## Learn more
+## 📚 Use Cases
+- **Fitness Tracker:** Auto-log steps and calories for gamified goals.
+- **Sleep Analyzer:** Track sleep duration for wellness insights.
+- **Health Monitor:** Alert on irregular heart rates.
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🤝 Contributing
+Contributions are welcome! 🙌 Fork the repo, create a branch, and submit a pull request. Check issues for tasks or report bugs.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📜 License
+MIT License. See [LICENSE](https://github.com/Haider-Mukhtar/ReactNative-Health-Connect/blob/main/LICENSE) for details.
 
-## Join the community
+## 📬 Stay Connected
+Want more React Native tutorials and tips?
+- 🌐 Website: [haidermukhtar.vercel.app](https://haidermukhtar.vercel.app/)
+- 💼 LinkedIn: [Haider Mukhtar](https://www.linkedin.com/in/haider-mukhtar/)
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Happy coding! Build something amazing with Google Health Connect in 2025! 💻
